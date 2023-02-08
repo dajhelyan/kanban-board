@@ -13,9 +13,6 @@ const useStyles = makeStyles({
     justifyContent: "flex-start",
     ...shorthands.padding("20px", "0px"),
     rowGap: "20px",
-  },
-  tabList: {
-    textDecorationLine: "none"
   }
 });
 
