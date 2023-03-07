@@ -1,46 +1,47 @@
 import React from "react";
+import { Card } from "@fluentui/react-components/unstable";
 import {
-  Card
-} from "@fluentui/react-components/unstable";
-import { 
-  Subtitle1, Text
+  Body2,
+  makeStyles,
+  shorthands,
+  Subtitle1,
+  Text,
 } from "@fluentui/react-components";
+import { Task } from "../../types";
 
-interface Task {
-  id: String,
-  titleTask: String,
-  description: String,
-  responsable: String,
-  date: String,
-  priority: String,
-  status: String
+export interface TaskProps {
+  tasks: Task;
 }
 
-export default function TaskCard() {
+const useStyles = makeStyles({
+  mgAuto: {
+    ...shorthands.margin("1em", "auto", "1em", "auto"),
+    width: "250px",
+  },
+  dateContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+  }
+});
+
+export default function TaskCard({ tasks }: TaskProps) {
+  const styles = useStyles();
 
   return (
-    <div className="task-card">
+    <div className={styles.mgAuto}>
       <section>
         <Card>
-          <Subtitle1 as="h4" block className="task-title">
-            Title
-          </Subtitle1>
-          <Text >
-            Description
-          </Text>
-          <Text >
-            Responsable
-          </Text>
-          <div className="date-container">
+          <Body2 as="h2" block className="task-title">
+            {tasks.titleTask}
+          </Body2>
+          <Text>{tasks.description}</Text>
+          <Text>{tasks.responsable}</Text>
+          <div className={styles.dateContainer}>
             <div>
-              <Text align="start">
-                Date
-              </Text>
+              <Text align="start">{tasks.date}</Text>
             </div>
             <div>
-              <Text align="end" >
-                Priority
-              </Text>
+              <Text align="end">{tasks.priority}</Text>
             </div>
           </div>
         </Card>
