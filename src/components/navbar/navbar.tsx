@@ -1,15 +1,15 @@
-import { Link, makeStyles, shorthands, Tab, Text, ToggleButton } from "@fluentui/react-components";
+import { Link, makeStyles, mergeClasses, shorthands, Tab, Text, ToggleButton } from "@fluentui/react-components";
 import React from "react";
 import TaskCard from "../task-card/task-card";
 import {
   bundleIcon,
-  Navigation24Filled,
-  Navigation24Regular,
+  NavigationFilled,
+  NavigationRegular,
 } from "@fluentui/react-icons";
 import NavItems from "./navItems";
 import { navStyles } from "./NavbarStyles";
 
-const NavigationIcon = bundleIcon(Navigation24Filled, Navigation24Regular);
+const NavigationIcon = bundleIcon(NavigationFilled, NavigationRegular);
 
 export default function Navbar() {
 
@@ -27,12 +27,12 @@ export default function Navbar() {
   )
 
   return (
-    <div>
+    <div className="">
       <nav className="w-100">
         {
           navState ?
             <>
-              <div className={styles.activeNav} >
+              <div className={mergeClasses(styles.activeNav, styles.sidebarCommon)} >
                 <div className={styles.iconContainer} >
                   <Text as="h3" className="" title="Menu">Menu
                   </Text>
@@ -46,7 +46,7 @@ export default function Navbar() {
               </div>
             </> :
             <>
-              <div className={styles.navbar} >
+              <div className={mergeClasses(styles.navbar,  styles.sidebarCommon)} >
                 <ToggleButton
                   appearance="transparent"
                   onClick={() => toggleNav()}

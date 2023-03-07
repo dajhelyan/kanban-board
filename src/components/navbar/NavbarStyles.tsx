@@ -3,22 +3,24 @@ import { makeStyles, shorthands } from "@fluentui/react-components"
 
 
 export const navStyles = makeStyles({
+  sidebarCommon: {
+    height: "100vh",
+    ...shorthands.padding("20px"),
+    boxSizing: "border-box",
+  },
   navbar: {
     left: "-100%",
     backgroundColor: "black",
     msTransition: "850ms",
-    maxWidth: "50px",
-    height: "100vh",
   },
   activeNav: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "start",
-    maxWidth: "200px",
+    maxWidth: "250px",
     backgroundColor: "aliceblue",
-    height: "100vh",
     left: "0",
-    msTransition: "350ms"
+    msTransition: "350ms",
   },
   menuIcon: {
     // fontSize: "2rem",
@@ -28,6 +30,6 @@ export const navStyles = makeStyles({
   iconContainer: {
     display: "flex",
     justifyContent: "space-between",
-    ...shorthands.padding("10px", "15px")
+    // ...shorthands.padding("10px", "15px")
   }, 
 })
