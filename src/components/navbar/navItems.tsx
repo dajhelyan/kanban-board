@@ -1,8 +1,8 @@
 import { Link, makeStyles, shorthands, Tab, TabList, ToggleButton } from "@fluentui/react-components";
 import React from "react";
 import {
-  TaskListSquareLtr24Regular,
-  Person24Regular
+  TaskListSquareLtrRegular,
+  PersonRegular
 } from "@fluentui/react-icons";
 
 const useStyles = makeStyles({
@@ -34,14 +34,14 @@ const navRoutes =
     {
       title: 'Login',
       path: '/login',
-      icon: <Person24Regular/>,
+      icon: <PersonRegular/>,
       tabValue: "loginTab",
       isDisable: true
     },
     {
       title: 'Kanban',
       path: '/',
-      icon: <TaskListSquareLtr24Regular/>,
+      icon: <TaskListSquareLtrRegular/>,
       tabValue: "kanbanTab",
       isDisable: false
     }
