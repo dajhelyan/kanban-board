@@ -1,4 +1,4 @@
-import React, { DragEvent, useEffect, useState } from "react";
+import React, { DragEvent, useEffect, useRef, useState } from "react";
 import {
   shorthands,
   makeStyles,
@@ -19,9 +19,10 @@ const useStyles = makeStyles({
     justifyContent: "space-around",
     // ...shorthands.border("1px", "solid"),
     ...shorthands.gap("40px"),
-    backgroundColor: "#c8d1fa",
+    backgroundColor: "#c8d1fa26",
   },
   boardColumn: {
+    width: "300px",
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#F6F8FC",
@@ -61,8 +62,8 @@ const STATUS_STATE = [
 const MOCK = [
   {
     id: 1,
-    titleTask: "Clean the house",
-    description: "Mop the kitchen",
+    titleTask: "Clean the room",
+    description: "Mop the floor",
     responsable: "Me",
     date: "22/02/23",
     priority: "High",
@@ -88,21 +89,23 @@ export default function StatusColumn() {
     return evt.preventDefault();
   }
 
-  function onDrop(evt:DragEvent, status: string) {
+  function onDrop(evt: DragEvent, status: string) {
     // get task id of element dragged
-    const taskId = evt.dataTransfer.getData('taskId');
+    const taskId = evt.dataTransfer.getData("taskId");
     // get data of element
-    const task = taskList.find(task => String(task.id) === taskId);
+    const task = taskList.find((task) => String(task.id) === taskId);
     // Change the status when the element is dropped
-    const newStatus = taskList.map(task => {
+    const newStatus = taskList.map((task) => {
       if (String(task.id) === taskId) {
         task.status = status;
       }
       return task;
-    })
+    });
+
+    console.log(task, "dropped");
 
     // update state
-    setTaskList(newStatus)
+    setTaskList(newStatus);
   }
 
   useEffect(() => {
@@ -120,15 +123,19 @@ export default function StatusColumn() {
               onDragOver={(evt) => {
                 dropOver(evt);
               }}
-              onDrop={(evt => {
-                onDrop(evt, taskCol.slug)
-              })}
+              onDrop={(evt) => {
+                onDrop(evt, taskCol.slug);
+              }}
             >
               <div className={styles.w100}>
                 <Text align="center">{taskCol.title}</Text>
               </div>
               <div>
-                <TaskList status={taskCol.slug} tasks={taskList}></TaskList>
+                <TaskList
+                  status={taskCol.slug}
+                  tasks={taskList}
+                  setTasks={setTaskList}
+                ></TaskList>
               </div>
             </div>
           </div>
