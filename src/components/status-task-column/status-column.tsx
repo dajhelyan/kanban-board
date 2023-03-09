@@ -2,27 +2,25 @@ import React, { DragEvent, useEffect, useRef, useState } from "react";
 import {
   shorthands,
   makeStyles,
-  mergeClasses,
-  Title2,
-  Title3,
-  Body2,
   Text,
-  tokens,
 } from "@fluentui/react-components";
 import { Status, Task, TaskStatus } from "../../types";
 import TaskList from "../task-list/task-list";
-import { TaskProps } from "../task-card/task-card";
 
 const useStyles = makeStyles({
   boardCont: {
+    width: "100%",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "space-around",
-    // ...shorthands.border("1px", "solid"),
-    ...shorthands.gap("40px"),
+    ...shorthands.margin("0.50em"),
     backgroundColor: "#c8d1fa26",
+    '@media (min-width: 767.98px)':{
+      flexDirection: "row",
+    },
+
   },
   boardColumn: {
-    width: "300px",
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#F6F8FC",
@@ -30,12 +28,6 @@ const useStyles = makeStyles({
   },
   w100: {
     width: "100%",
-  },
-  p20: {
-    ...shorthands.padding("0px"),
-  },
-  p: {
-    fontSize: "13px",
   },
 });
 
@@ -117,7 +109,6 @@ export default function StatusColumn() {
     <div className={styles.boardCont}>
       {taskStatus.map((taskCol) => {
         return (
-          <div className={styles.boardCont}>
             <div
               className={styles.boardColumn}
               onDragOver={(evt) => {
@@ -138,7 +129,6 @@ export default function StatusColumn() {
                 ></TaskList>
               </div>
             </div>
-          </div>
         );
       })}
     </div>
