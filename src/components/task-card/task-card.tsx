@@ -16,7 +16,21 @@ export interface TaskProps {
 const useStyles = makeStyles({
   mgAuto: {
     ...shorthands.margin("1em", "auto", "1em", "auto"),
-    width: "250px",
+    '@media (max-width: 767.98px)':{
+      maxWidth: "80%",
+      fontSize: "0.80em",
+      ...shorthands.padding("0.25em", "auto", "0.25em", "auto")
+    }
+  },
+  w80: {
+    width: "80%",
+  },
+  text: {
+    '@media (max-width: 767.98px)':{
+      fontSize: "1em",
+      ...shorthands.margin("0"),
+
+    }
   },
   dateContainer: {
     display: "flex",
@@ -30,18 +44,18 @@ export default function TaskCard({ tasks }: TaskProps) {
   return (
     <div className={styles.mgAuto}>
       <section>
-        <Card>
-          <Body2 as="h2" block className="task-title">
+        <Card >
+          <Text className={styles.text} as="h2" block>
             {tasks.titleTask}
-          </Body2>
-          <Text>{tasks.description}</Text>
-          <Text>{tasks.responsable}</Text>
+          </Text>
+          <Text className={styles.text}>{tasks.description}</Text>
+          <Text className={styles.text}>{tasks.responsable}</Text>
           <div className={styles.dateContainer}>
             <div>
-              <Text align="start">{tasks.date}</Text>
+              <Text className={styles.text} align="start">{tasks.date}</Text>
             </div>
             <div>
-              <Text align="end">{tasks.priority}</Text>
+              <Text className={styles.text} align="end">{tasks.priority}</Text>
             </div>
           </div>
         </Card>
