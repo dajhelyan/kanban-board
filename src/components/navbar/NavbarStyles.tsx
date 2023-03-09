@@ -5,7 +5,7 @@ import { makeStyles, shorthands } from "@fluentui/react-components"
 export const navStyles = makeStyles({
   sidebarCommon: {
     height: "100vh",
-    ...shorthands.padding("20px"),
+    ...shorthands.padding("0.50em"),
     boxSizing: "border-box",
   },
   navbar: {
