@@ -22,6 +22,7 @@ const useStyles = makeStyles({
   },
   boardColumn: {
     display: "flex",
+    width:"30%",
     flexDirection: "column",
     backgroundColor: "#F6F8FC",
     ...shorthands.gap("16px"),
