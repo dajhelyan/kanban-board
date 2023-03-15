@@ -1,38 +1,11 @@
 import React, { DragEvent, useEffect, useRef, useState } from "react";
-import {
-  shorthands,
-  makeStyles,
-  Text,
-} from "@fluentui/react-components";
 import { Status, Task, TaskStatus } from "../../types";
 import TaskList from "../task-list/task-list";
+import Badged from "../badge/badge";
+import { StatusEnum } from "../../colum-status";
+import { useStyles } from "./status-column-style";
 
-const useStyles = makeStyles({
-  boardCont: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    ...shorthands.margin("0.50em"),
-    backgroundColor: "#c8d1fa26",
-    '@media (min-width: 767.98px)':{
-      flexDirection: "row",
-    },
-
-  },
-  boardColumn: {
-    display: "flex",
-    width:"30%",
-    flexDirection: "column",
-    backgroundColor: "#F6F8FC",
-    ...shorthands.gap("16px"),
-  },
-  w100: {
-    width: "100%",
-  },
-});
-
-export interface AppState {
+export interface ColumnState {
   tasks: Array<Task>;
   taskStatus: Array<Status>;
 }
@@ -40,15 +13,18 @@ export interface AppState {
 const STATUS_STATE = [
   {
     title: "Pendiente",
-    slug: "pending",
+    slug: StatusEnum.TO_DO,
+    color: "informative",
   },
   {
     title: "En Ejecución",
-    slug: "inProgress",
+    slug: StatusEnum.IN_PROGRESS,
+    color: "warning",
   },
   {
     title: "Completado",
-    slug: "done",
+    slug: StatusEnum.COMPLETED,
+    color: "success",
   },
 ];
 
@@ -60,7 +36,7 @@ const MOCK = [
     responsable: "Me",
     date: "22/02/23",
     priority: "High",
-    status: "pending",
+    status: StatusEnum.TO_DO,
   },
   {
     id: 2,
@@ -69,14 +45,21 @@ const MOCK = [
     responsable: "Me",
     date: "22/02/23",
     priority: "low",
-    status: "pending",
+    status: StatusEnum.IN_PROGRESS,
   },
 ];
 
+const colorsType = {
+  TO_DO: "informative",
+  IN_PROGRESS: "warnig",
+  COMPLETED: "success",
+};
+
 export default function StatusColumn() {
   const styles = useStyles();
-  const [taskStatus, setTaskStatus] = useState<AppState["taskStatus"]>([]);
-  const [taskList, setTaskList] = useState<AppState["tasks"]>([]);
+  
+  const [taskStatus, setTaskStatus] = useState<ColumnState["taskStatus"]>([]);
+  const [taskList, setTaskList] = useState<ColumnState["tasks"]>([]);
 
   function dropOver(evt: DragEvent) {
     return evt.preventDefault();
@@ -110,26 +93,27 @@ export default function StatusColumn() {
     <div className={styles.boardCont}>
       {taskStatus.map((taskCol) => {
         return (
-            <div
-              className={styles.boardColumn}
-              onDragOver={(evt) => {
-                dropOver(evt);
-              }}
-              onDrop={(evt) => {
-                onDrop(evt, taskCol.slug);
-              }}
-            >
-              <div className={styles.w100}>
-                <Text align="center">{taskCol.title}</Text>
-              </div>
-              <div>
-                <TaskList
-                  status={taskCol.slug}
-                  tasks={taskList}
-                  setTasks={setTaskList}
-                ></TaskList>
-              </div>
+          <div
+            key={taskCol.slug}
+            className={styles.boardColumn}
+            onDragOver={(evt) => {
+              dropOver(evt);
+            }}
+            onDrop={(evt) => {
+              onDrop(evt, taskCol.slug);
+            }}
+          >
+            <div className={styles.w100}>
+              <Badged title={taskCol.title} bg={taskCol.color}></Badged>
             </div>
+            <div className={styles.statusCol}>
+              <TaskList
+                status={taskCol.slug}
+                tasks={taskList}
+                setTasks={setTaskList}
+              ></TaskList>
+            </div>
+          </div>
         );
       })}
     </div>
