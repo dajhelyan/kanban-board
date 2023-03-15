@@ -2,7 +2,7 @@ import { shorthands, makeStyles } from "@fluentui/react-components";
 import React, { DragEvent, useEffect, useRef, useState } from "react";
 import TaskCard from "../task-card/task-card";
 import { Task } from "../../types";
-import { AppState } from "../status-task-column/status-column";
+import { ColumnState } from "../status-task-column/status-column";
 import { Signature } from "typescript";
 
 interface Props {
