@@ -9,11 +9,8 @@ export const navStyles = makeStyles({
     boxSizing: "border-box",
     top: "0",
   },
-  navbar: {
-    top: "0",
-    height: "100vh",
+  sidebar: {
     left: "-100%",
-    position: "sticky",
     backgroundColor: "black",
     msTransition: "850ms",
   },
