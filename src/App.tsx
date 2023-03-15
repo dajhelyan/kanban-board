@@ -1,24 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TaskCard from './components/task-card/task-card';
+import Navbar from './components/navbar/navbar';
+import BoardView from './views/board-view';
+import { makeStyles } from '@fluentui/react-components';
+export const mainStyles = makeStyles({
+  main: {
+    display: "flex",
+    justifyContent: "flex-start",
+    width: "100%",
+    position: "relative"
+  }
+})
 
 function App() {
+  const styles = mainStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.main}>
+      <Navbar></Navbar>
+      <BoardView></BoardView>
     </div>
   );
 }
