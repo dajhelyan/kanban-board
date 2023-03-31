@@ -1,6 +1,5 @@
 import { Body1, Input, Label, shorthands, useId, makeStyles, Title2, tokens } from "@fluentui/react-components";
 import React from "react";
-import breakpoints from "../breakpoints";
 import {
   AddRegular
 } from "@fluentui/react-icons";
