@@ -1,18 +1,27 @@
 import React from "react";
-import { makeStyles, shorthands, Text, Title1 }  from "@fluentui/react-components"
+import { makeStyles, shorthands, Text, Title1, tokens }  from "@fluentui/react-components"
 
 const useStyles = makeStyles({
-  title: {
-    ...shorthands.margin("20px", "20px")
+  text: {
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase600,
+    fontWeight: tokens.fontWeightSemibold,
+    lineHeight: tokens.lineHeightBase400,
+    color: tokens.colorNeutralForeground2,
+    '@media (max-width: 767.98px)':{
+      fontSize: "1em",
+
+    }
   },
+  
 });
 
 export default function Heading() {
   const styles = useStyles();
 
   return (
-    <div className={styles.title}>
-      <Title1 align="start">To-Do board</Title1>
+    <div>
+      <Text className={styles.text} align="start">To-Do board</Text>
     </div>
   )
 }
