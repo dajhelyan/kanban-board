@@ -15,7 +15,7 @@ import {
   NavigationRegular,
 } from "@fluentui/react-icons";
 import NavItems from "./navItems";
-import { navStyles } from "./NavbarStyles";
+import { navStyles } from "./Navbar-styles";
 
 const NavigationIcon = bundleIcon(NavigationFilled, NavigationRegular);
 
@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={styles.navbar}>
+      <nav className={styles.sidebar}>
         {navState ? (
           <>
             <div
@@ -56,7 +56,7 @@ export default function Navbar() {
           </>
         ) : (
           <>
-            <div className={mergeClasses(styles.navbar, styles.sidebarCommon)}>
+            <div className={mergeClasses(styles.sidebar, styles.sidebarCommon)}>
               <ToggleButton
                 appearance="transparent"
                 onClick={() => toggleNav()}
