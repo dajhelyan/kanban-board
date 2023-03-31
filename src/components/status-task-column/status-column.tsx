@@ -4,6 +4,7 @@ import TaskList from "../task-list/task-list";
 import Badged from "../badge/badge";
 import { StatusEnum } from "../../colum-status";
 import { useStyles } from "./status-column-style";
+import { tasks } from "../../mock-data/tasks-mock-data";
 
 export interface ColumnState {
   tasks: Array<Task>;
@@ -28,32 +29,11 @@ const STATUS_STATE = [
   },
 ];
 
-const MOCK = [
-  {
-    id: 1,
-    titleTask: "Clean the room",
-    description: "Mop the floor",
-    responsable: "Me",
-    date: "22/02/23",
-    priority: "High",
-    status: StatusEnum.TO_DO,
-  },
-  {
-    id: 2,
-    titleTask: "Clean the house",
-    description: "Mop the kitchen",
-    responsable: "Me",
-    date: "22/02/23",
-    priority: "low",
-    status: StatusEnum.IN_PROGRESS,
-  },
-];
-
-const colorsType = {
-  TO_DO: "informative",
-  IN_PROGRESS: "warnig",
-  COMPLETED: "success",
-};
+// const colorsType = {
+//   TO_DO: "informative",
+//   IN_PROGRESS: "warnig",
+//   COMPLETED: "success",
+// };
 
 export default function StatusColumn() {
   const styles = useStyles();
@@ -86,7 +66,7 @@ export default function StatusColumn() {
 
   useEffect(() => {
     setTaskStatus(STATUS_STATE);
-    setTaskList(MOCK);
+    setTaskList(tasks);
   }, []);
 
   return (
