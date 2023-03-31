@@ -1,27 +1,16 @@
-import { Body1, Input, Label, shorthands, useId, makeStyles, Title2, tokens } from "@fluentui/react-components";
-import React from "react";
+import { Input, useId, makeStyles, mergeClasses } from "@fluentui/react-components";
 import {
   AddRegular
 } from "@fluentui/react-icons";
+import { appStyles } from "../../styles/app-style";
 const useStyles = makeStyles({
-  w100: {
-    maxWidth: "100%",
-    width: "100%",
-    '@media (max-width: 767.98px)':{
-      minWidth: "100%"
-
-    }
-
-  },
-
+ 
 });
 
 export default function Search() {
-  const styles = useStyles();
+  const styles = appStyles();
   const beforeId = useId("content-before");
   return (
-    <div className={styles.w100} >
-      <Input  className={styles.w100} appearance="underline"  contentBefore={<AddRegular />} id={beforeId} placeholder="Nueva tarea" />
-    </div>
+      <Input  className={mergeClasses(styles.md100, styles.w100)} appearance="underline"  contentBefore={<AddRegular />} id={beforeId} placeholder="Nueva tarea" />
   )
 }

@@ -4,20 +4,11 @@ import './App.css';
 import TaskCard from './components/task-card/task-card';
 import Navbar from './components/navbar/navbar';
 import BoardView from './views/board-view';
-import { makeStyles } from '@fluentui/react-components';
-export const mainStyles = makeStyles({
-  main: {
-    display: "flex",
-    justifyContent: "flex-start",
-    width: "100%",
-    position: "relative",
-        boxSizing: "content-box",
+import { appStyles } from './styles/app-style';
 
-  }
-})
 
 function App() {
-  const styles = mainStyles();
+  const styles = appStyles();
 
   return (
     <div className={styles.main}>
