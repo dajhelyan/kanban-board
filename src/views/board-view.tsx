@@ -12,8 +12,10 @@ import StatusBoard from "../components/task-list/task-list";
 
 const useStyles = makeStyles({
   boardLayout: {
+    boxSizing: "border-box",
+
     width: "100%",
-    ...shorthands.margin("0.5em", "2.5em", "1em", "2.5em"),
+    ...shorthands.margin("1em"),
   },
   title: {
     ...shorthands.margin("20px", "20px"),
@@ -21,6 +23,7 @@ const useStyles = makeStyles({
   flex: {
     display: "flex",
     justifyContent: "space-between",
+    ...shorthands.margin("0.50em", "0em", "1em", "0em"),
     '@media (max-width: 767.98px)':{
       maxWidth: "100%",
       flexWrap: "wrap",
@@ -29,13 +32,14 @@ const useStyles = makeStyles({
   w100: {
     width: "100%",
   },
-  main: {
-    width: "100%",
-    '@media (max-width: 767.98px)':{
-      width: "100%",
-      ...shorthands.margin("1em"),
-    }
-  },
+  // main: {
+  //   width: "100%",
+  //   position:"relative",
+  //   '@media (max-width: 767.98px)':{
+  //     width: "100%",
+  //     ...shorthands.margin("1em"),
+  //   }
+  // },
 });
 
 export default function BoardView() {
@@ -45,13 +49,12 @@ export default function BoardView() {
       <div >
         <Heading ></Heading>
       </div>
-      
       <div className={mergeClasses(styles.flex)}>
         <Search></Search>
         <Filter></Filter>
       </div>
       <div >
-        <StatusColumn></StatusColumn>
+        <StatusColumn ></StatusColumn>
       </div>
     </div>
   );
