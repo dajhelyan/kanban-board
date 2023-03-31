@@ -15,11 +15,11 @@ interface Props {
 
 const useStyles = makeStyles({
   text: {
-    fontFamily: tokens.fontFamilyMonospace,
-    fontSize: tokens.fontSizeBase400,
+    fontFamily: tokens.fontFamilyMonospace, 
+    fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightMedium,
-    lineHeight: tokens.lineHeightBase400,
-    color: tokens.colorNeutralForeground3,
+    lineHeight: tokens.lineHeightBase200,
+    color: tokens.colorNeutralStrokeAccessible,
   },
 });
 
