@@ -1,4 +1,4 @@
-import { makeStyles, shorthands } from "@fluentui/react-components";
+import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 
 export const useStyles = makeStyles({
   boardCont: {
@@ -15,18 +15,40 @@ export const useStyles = makeStyles({
   boardColumn: {
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "#f9f9f9",
+    height:"80%",
+    // minWidth: "90%",
+    // width:"80%",
+    backgroundColor: tokens.colorPaletteCornflowerBackground2,
     "@media (min-width: 767.98px)": {
-      width: "34%",
+      width: "30%",
     },
   },
   w100: {
     width: "100%",
-    ...shorthands.padding("0.50em", "0em", "0em", "0em"),
+    ...shorthands.padding("0.50em"),
+    // boxSizing:"border-box"
     // textAlign: "center",
     // backgroundColor: "#40bd403b",
   },
   statusCol: {
-    // backgroundColor: "#9fa0cb38"
+      display: "flex",
+      flexDirection: "row",
+      ...shorthands.overflow("auto"),
+      flexWrap: "nowrap",
+      // boxSizing: "border-box",
+      // ...shorthands.margin("0.50em", "1em"),
+
+      '> div': {
+        minWidth: "100%",
+        width:"100%",
+
+      },
+      '@media (min-width: 575.98px)': {
+        flexDirection: "column",
+        ...shorthands.margin("0.50em", "1em"),
+
+
+      },
+      // maxWidth: "100%",
   },
 });
