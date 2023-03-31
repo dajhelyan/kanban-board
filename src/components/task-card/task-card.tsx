@@ -15,20 +15,23 @@ export interface TaskProps {
 
 const useStyles = makeStyles({
   mgAuto: {
-    ...shorthands.margin("1em", "auto", "1em", "auto"),
+    ...shorthands.margin("0.50em", "auto", "0.50em", "auto"),
     '@media (max-width: 767.98px)':{
-      maxWidth: "80%",
-      fontSize: "0.80em",
+      maxWidth: "90%",
+      fontSize: "0.50em",
       ...shorthands.padding("0.25em", "auto", "0.25em", "auto")
     }
   },
+  card: {
+    ...shorthands.gap("0.25em"),
+  },
   w80: {
-    width: "80%",
+    width: "90%",
   },
   text: {
     '@media (max-width: 767.98px)':{
-      fontSize: "1em",
-      ...shorthands.margin("0"),
+      // fontSize: "1em",
+      // ...shorthands.margin("0"),
 
     }
   },
@@ -44,8 +47,8 @@ export default function TaskCard({ tasks }: TaskProps) {
   return (
     <div className={styles.mgAuto}>
       <section>
-        <Card >
-          <Text className={styles.text} as="h2" block>
+        <Card className={styles.card} >
+          <Text className={styles.text} block>
             {tasks.titleTask}
           </Text>
           <Text className={styles.text}>{tasks.description}</Text>
