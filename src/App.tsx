@@ -10,7 +10,9 @@ export const mainStyles = makeStyles({
     display: "flex",
     justifyContent: "flex-start",
     width: "100%",
-    position: "relative"
+    position: "relative",
+        boxSizing: "content-box",
+
   }
 })
 
